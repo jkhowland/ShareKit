@@ -25,6 +25,11 @@
 {
 	if (!sharer.quiet)
 		[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:@"shareKitFinishedShare" 
+     object:self];
+
 }
 
 - (void)sharer:(SHKSharer *)sharer failedWithError:(NSError *)error shouldRelogin:(BOOL)shouldRelogin
@@ -42,10 +47,19 @@
 		if (shouldRelogin)
 			[sharer promptAuthorization];
 	}
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:@"shareKitFailedShare" 
+     object:self];
+
 }
 
 - (void)sharerCancelledSending:(SHKSharer *)sharer
 {
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:@"userCancelledShare" 
+     object:self];
 
 }
 

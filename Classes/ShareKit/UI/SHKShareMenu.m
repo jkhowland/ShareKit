@@ -56,7 +56,7 @@
 {
 	if (self = [super initWithStyle:style])
 	{
-		self.title = SHKLocalizedString(@"Share");
+		self.title = SHKLocalizedString(@"Share with:");
 		
 		self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                                target:self
